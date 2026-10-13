@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowDownRight, ArrowUpRight, Cloud, Code2, GitBranch, Mail, MapPin,
   FileText, Linkedin, Github, ShieldCheck, Workflow, Server, Terminal,
@@ -14,7 +14,7 @@ const skills = [
 
 const experience = [
   {
-    company: 'Kenvue', role: 'Senior Engineer — Cloud & Infrastructure', dates: 'Sep 2024 — Present', location: 'Bengaluru, Karnataka, India', current: true,
+    company: 'Kenvue', logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Kenvue_logo.svg', logoAlt: 'Kenvue logo', role: 'Senior Engineer — Cloud & Infrastructure', dates: 'Sep 2024 — Present', location: 'Bengaluru, Karnataka, India', current: true,
     points: [
       'Contributed to the CloudX-to-KCloud migration, which delivered USD 1.5 million in project savings.',
       'Independently delivered cloud optimization that generated USD 136,000 in savings.',
@@ -25,7 +25,7 @@ const experience = [
     ]
   },
   {
-    company: 'Insight', role: 'Cloud Engineer II', dates: 'Sep 2021 — Aug 2024', location: 'Noida, Uttar Pradesh, India · Key project: Johnson & Johnson', current: false,
+    company: 'Insight', logo: 'https://companieslogo.com/img/orig/NSIT_BIG-c5941e6f.svg', logoAlt: 'Insight Enterprises logo', role: 'Cloud Engineer II', dates: 'Sep 2021 — Aug 2024', location: 'Noida, Uttar Pradesh, India · Key project: Johnson & Johnson', current: false,
     points: [
       'Automated Azure workflows with Python and PowerShell, improving operational efficiency by 98% while reducing manual provisioning effort and errors.',
       'Built event-driven Azure Functions using Python and Azure REST API, reducing manual tasks by 40% and improving overall operational efficiency by 25%.',
@@ -67,6 +67,25 @@ function Reveal({ children, className = '' }) {
 
 function SectionHeading({ eyebrow, title, note }) {
   return <div className="section-heading"><div><span className="eyebrow">{eyebrow}</span><h2>{title}</h2></div>{note && <p>{note}</p>}</div>;
+}
+
+function ExperienceCard({ job, index }) {
+  const [expanded, setExpanded] = useState(true);
+  const [logoFailed, setLogoFailed] = useState(false);
+  return <Reveal className="timeline-reveal"><article className={`job-card ${job.current ? 'job-card-current' : ''}`}>
+    <div className="job-index">0{index + 1}</div><div className="job-main">
+      <div className="job-topline"><div className="job-company-wrap">
+        <div className={`company-logo ${job.company.toLowerCase()}-logo`} aria-label={`${job.company} company logo`}>
+          {!logoFailed && <img src={job.logo} alt={job.logoAlt} loading="lazy" onError={() => setLogoFailed(true)} />}
+          {logoFailed && <span>{job.company === 'Kenvue' ? 'K' : 'insight'}</span>}
+        </div>
+        <div><h3>{job.company}</h3><p className="job-role">{job.role}</p></div>
+      </div><div className="job-dates">{job.current && <span className="current-tag"><span className="status-dot" /> Current</span>}<span>{job.dates}</span></div></div>
+      <p className="job-location">{job.location}</p>
+      <div className="achievement-heading"><span>KEY CONTRIBUTIONS</span><button type="button" onClick={() => setExpanded(value => !value)} aria-expanded={expanded}>{expanded ? 'Hide details' : 'Show details'} <span>{expanded ? '−' : '+'}</span></button></div>
+      {expanded && <ul className="achievement-list">{job.points.map(point => <li key={point}>{point}</li>)}</ul>}
+    </div>
+  </article></Reveal>;
 }
 
 export default function App() {
@@ -126,13 +145,7 @@ export default function App() {
       <section className="section-wrap content-section" id="experience">
         <Reveal><SectionHeading eyebrow="CAREER JOURNEY" title="Experience" note="Cloud engineering across enterprise environments, from automation and governance to large-scale migration." /></Reveal>
         <div className="timeline">
-          {experience.map((job, index) => <Reveal key={job.company} className="timeline-reveal"><article className="job-card">
-            <div className="job-index">0{index + 1}</div><div className="job-main">
-              <div className="job-topline"><div><h3>{job.company}</h3><p className="job-role">{job.role}</p></div><div className="job-dates">{job.current && <span className="current-tag"><span className="status-dot" /> Current</span>}<span>{job.dates}</span></div></div>
-              <p className="job-location">{job.location}</p>
-              <ul className="achievement-list">{job.points.map(point => <li key={point}>{point}</li>)}</ul>
-            </div>
-          </article></Reveal>)}
+          {experience.map((job, index) => <ExperienceCard key={job.company} job={job} index={index} />)}
         </div>
       </section>
 
