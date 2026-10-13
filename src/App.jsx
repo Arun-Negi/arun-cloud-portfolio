@@ -75,11 +75,11 @@ function ExperienceCard({ job, index }) {
   return <Reveal className="timeline-reveal"><article className={`job-card ${job.current ? 'job-card-current' : ''}`}>
     <div className="job-index">0{index + 1}</div><div className="job-main">
       <div className="job-topline"><div className="job-company-wrap">
-        <div className={`company-logo ${job.company.toLowerCase()}-logo`} aria-label={`${job.company} company logo`}>
+        <a className={`company-logo ${job.company.toLowerCase()}-logo`} href={job.company === 'Kenvue' ? 'https://www.kenvue.com/' : 'https://www.insight.com/'} target="_blank" rel="noreferrer" aria-label={`Visit ${job.company} website`} title={`Visit ${job.company} website`}>
           {!logoFailed && <img src={job.logo} alt={job.logoAlt} loading="lazy" onError={() => setLogoFailed(true)} />}
-          {logoFailed && <span>{job.company === 'Kenvue' ? 'K' : 'insight'}</span>}
-        </div>
-        <div><h3>{job.company}</h3><p className="job-role">{job.role}</p></div>
+          {logoFailed && <span aria-hidden="true">{job.company === 'Kenvue' ? 'K' : 'insight'}</span>}
+        </a>
+        <div><p className="job-role">{job.role}</p></div>
       </div><div className="job-dates">{job.current && <span className="current-tag"><span className="status-dot" /> Current</span>}<span>{job.dates}</span></div></div>
       <p className="job-location">{job.location}</p>
       <div className="achievement-heading"><span>KEY CONTRIBUTIONS</span><button type="button" onClick={() => setExpanded(value => !value)} aria-expanded={expanded}>{expanded ? 'Hide details' : 'Show details'} <span>{expanded ? '−' : '+'}</span></button></div>
@@ -161,7 +161,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact"><div className="section-wrap contact-inner"><Reveal><div><span className="eyebrow">GET IN TOUCH</span><h2>Let’s build something<br /><span>reliable together.</span></h2><p>For cloud infrastructure, automation and engineering conversations, feel free to connect.</p></div></Reveal><Reveal><div className="contact-links"><a href="mailto:heyarunnegi@gmail.com"><span className="contact-link-icon"><Mail size={18} /></span><span><small>Email</small><b>heyarunnegi@gmail.com</b></span><ArrowUpRight size={17} /></a><a href="https://linkedin.com/in/aroonnegi" target="_blank" rel="noreferrer"><span className="contact-link-icon"><Linkedin size={18} /></span><span><small>LinkedIn</small><b>linkedin.com/in/aroonnegi</b></span><ArrowUpRight size={17} /></a><a href="https://github.com/Arun-Negi/resume" target="_blank" rel="noreferrer"><span className="contact-link-icon"><Github size={18} /></span><span><small>GitHub</small><b>github.com/Arun-Negi/resume</b></span><ArrowUpRight size={17} /></a></div></Reveal></div></section>
+      <section className="contact-section" id="contact"><div className="section-wrap contact-inner"><Reveal><div><span className="eyebrow">GET IN TOUCH</span><h2>Let’s build something<br /><span>reliable together.</span></h2><p>For cloud infrastructure, automation and engineering conversations, feel free to connect.</p></div></Reveal><Reveal><div className="contact-links"><a href="mailto:heyarunnegi@gmail.com"><span className="contact-link-icon contact-email"><Mail size={18} /></span><span><small>Email</small><b>heyarunnegi@gmail.com</b></span><ArrowUpRight size={17} /></a><a href="https://linkedin.com/in/aroonnegi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-linkedin"><Linkedin size={18} /></span><span><small>LinkedIn</small><b>linkedin.com/in/aroonnegi</b></span><ArrowUpRight size={17} /></a><a href="https://github.com/Arun-Negi/resume" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-github"><Github size={18} /></span><span><small>GitHub</small><b>github.com/Arun-Negi/resume</b></span><ArrowUpRight size={17} /></a></div></Reveal></div></section>
     </main>
     <footer className="site-footer"><div className="section-wrap footer-inner"><a className="wordmark" href="#home"><span className="wordmark-mark">A</span><span>Arun Negi<span className="wordmark-dot">.</span></span></a><span>Cloud infrastructure · Automation · Continuous improvement</span><a href="#home" className="back-top">Back to top ↑</a></div></footer>
   </>;
