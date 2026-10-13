@@ -3,3 +3,17 @@
 /* Company-branded, interactive experience cards */
 .job-card{transition:background .25s ease,transform .25s ease}.job-card-current{position:relative}.job-company-wrap{display:flex;align-items:center;gap:15px}.company-logo{width:116px;height:56px;flex:0 0 116px;display:flex;align-items:center;justify-content:center;padding:9px 12px;background:#fff;border:1px solid #e7ebf1;border-radius:10px;box-shadow:0 5px 18px #1c293b08;transition:transform .25s ease,box-shadow .25s ease}.company-logo:hover{transform:translateY(-2px);box-shadow:0 10px 24px #1c293b12}.company-logo img{display:block;max-width:100%;max-height:100%;object-fit:contain}.company-logo.kenvue-logo img{width:100%;height:auto}.company-logo.insight-logo img{width:100%;height:auto}.company-logo span{font-weight:800;font-size:19px;color:#1b2635;letter-spacing:-.7px}.company-logo.insight-logo span{font-size:16px;color:#ae0a46}.achievement-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding-top:2px}.achievement-heading>span{font-size:9px;letter-spacing:1.3px;font-weight:800;color:#8a97a8}.achievement-heading button{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e0e6ef;border-radius:7px;padding:7px 10px;color:#536176;font:600 10px 'DM Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}.achievement-heading button:hover{background:#eef3fb;border-color:#cad8f0;color:var(--blue)}.achievement-heading button span{font-size:14px;line-height:10px;color:var(--blue)}.job-main .achievement-list{animation:details-in .3s ease both}@keyframes details-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:650px){.job-company-wrap{align-items:flex-start;gap:10px}.company-logo{width:78px;height:44px;flex-basis:78px;padding:7px}.company-logo span{font-size:16px}.company-logo.insight-logo span{font-size:12px}.job-company-wrap h3{font-size:19px}.achievement-heading{margin-top:4px}.achievement-heading button{font-size:9px;padding:7px 8px}}
+
+
+/* Clean, clickable company marks and colourful contact-brand icons */
+.company-logo{width:76px;height:48px;flex:0 0 76px;padding:2px;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;transition:transform .2s ease!important}
+.company-logo:hover{transform:translateY(-2px) scale(1.04);box-shadow:none!important}
+.company-logo img{width:100%;height:100%;object-fit:contain}
+.company-logo span{background:transparent}
+.job-company-wrap{gap:16px}
+.contact-link-icon{border:0!important;background:transparent!important;width:40px;height:40px;flex:0 0 40px}
+.contact-email{color:#EA4335!important;background:#fff!important;border-radius:11px!important}
+.contact-linkedin{color:#0A66C2!important;background:#fff!important;border-radius:8px!important}
+.contact-github{color:#fff!important;background:#24292f!important;border-radius:50%!important}
+.contact-link-icon svg{width:22px;height:22px}
+@media(max-width:650px){.company-logo{width:60px;height:42px;flex-basis:60px;padding:1px}.job-company-wrap{gap:10px}}
