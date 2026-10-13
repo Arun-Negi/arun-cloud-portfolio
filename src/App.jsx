@@ -117,7 +117,7 @@ export default function App() {
           <p className="hero-lede">I’m Arun — a Senior Engineer focused on Azure infrastructure, automation, migrations and cloud cost optimization.</p>
           <div className="hero-actions">
             <a className="button button-primary" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <FileText size={16} /></a>
-            <a className="button button-secondary" href="https://github.com/Arun-Negi/resume" target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={16} /></a>
+            <a className="button button-secondary" href="https://github.com/Arun-Negi" target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={16} /></a>
           </div>
           <div className="hero-meta"><span><MapPin size={15} /> Bengaluru, India</span><span><ShieldCheck size={15} /> Azure · Terraform · Automation</span></div>
         </div>
