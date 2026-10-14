@@ -78,3 +78,18 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 :root[data-theme="dark"] .contact-email,:root[data-theme="dark"] .contact-linkedin,:root[data-theme="dark"] .contact-github{background:transparent!important}
 .contact-links>a:hover .contact-link-icon{transform:translateY(-2px);filter:drop-shadow(0 2px 5px currentColor)}
 .contact-link-icon{transition:transform .2s ease,filter .2s ease}
+
+
+/* Keep hero illustration cards visible in light mode too */
+:root:not([data-theme="dark"]) .cloud-core{
+  background:var(--surface);
+  border:1px solid var(--border-color);
+  border-radius:38px;
+  box-shadow:0 12px 30px rgba(28,41,59,.09);
+}
+:root:not([data-theme="dark"]) .float-card{
+  background:var(--surface);
+  border:1px solid var(--border-color);
+  border-radius:12px;
+  box-shadow:0 8px 22px rgba(28,41,59,.08);
+}
