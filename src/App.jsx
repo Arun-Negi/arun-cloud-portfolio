@@ -187,7 +187,7 @@ export default function App() {
 
       <section className="section-wrap content-section credentials-section" id="credentials">
         <Reveal><SectionHeading eyebrow="CONTINUOUS LEARNING" title="Certifications & education" note="Cloud, DevOps and foundational data/AI learning." /></Reveal>
-        <div className="credentials-layout"><div className="cert-list">{certifications.map(([issuer, title, date]) => <Reveal key={title}><div className="cert-row"><span className="cert-icon"><BadgeCheck size={18} /></span><div className="cert-copy"><span className="cert-issuer">{issuer}</span><h3>{title}</h3></div><span className="cert-date">{date}</span></div></Reveal>)}</div>
+        <div className="credentials-layout"><div className="cert-list">{certifications.map(([issuer, title, date]) => <Reveal key={title}><div className="cert-row"><span className="cert-icon"><BadgeCheck size={18} /></span><div className="cert-copy">{issuer === 'KodeKloud' ? <a className="cert-issuer" href="https://drive.google.com/file/d/1I4fsPmLCRbHQSKOZrXOsT0miBjGrvQW2/view?usp=share_link" target="_blank" rel="noreferrer">KodeKloud</a> : <span className="cert-issuer">{issuer}</span>}<h3>{title}</h3></div><span className="cert-date">{date}</span></div></Reveal>)}</div>
           <Reveal><aside className="education-card"><span className="education-icon"><GraduationCap size={22} /></span><span className="eyebrow">EDUCATION</span><h3>B.Tech (Hons.), Computer Science — Cloud Computing</h3><p>Graphic Era Hill University</p><span className="education-location">Dehradun, Uttarakhand, India</span></aside></Reveal>
         </div>
       </section>
