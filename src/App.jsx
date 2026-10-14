@@ -38,11 +38,11 @@ const experience = [
 ];
 
 const certifications = [
-  ['Microsoft', 'DevOps Engineer Expert (AZ-400)', 'Jun 2022'],
-  ['Microsoft', 'Azure Developer Associate (AZ-204)', 'Mar 2021'],
-  ['Microsoft', 'Azure AI Fundamentals (AI-900)', 'May 2021'],
-  ['Microsoft', 'Azure Data Fundamentals (DP-900)', 'May 2021'],
-  ['KodeKloud', 'Kubernetes for the Absolute Beginners', 'Sep 2024'],
+  ['Microsoft', 'DevOps Engineer Expert (AZ-400)', 'Jun 2022', 'https://www.credly.com/badges/401859a5-ae37-49c1-98d7-4c178d0a4c64/public_url'],
+  ['Microsoft', 'Azure Developer Associate (AZ-204)', 'Mar 2021', 'https://www.credly.com/badges/defb9e64-da34-4571-b598-17a83e33c30b/public_url'],
+  ['Microsoft', 'Azure AI Fundamentals (AI-900)', 'May 2021', 'https://www.credly.com/badges/20f01493-b8b3-423d-a8db-32f4aeb777c1/public_url'],
+  ['Microsoft', 'Azure Data Fundamentals (DP-900)', '', 'https://www.credly.com/badges/4d204e8b-f4e7-48f7-b140-1a6175e09047/public_url'],
+  ['KodeKloud', 'Kubernetes for the Absolute Beginners', 'Sep 2024', 'https://drive.google.com/file/d/1I4fsPmLCRbHQSKOZrXOsT0miBjGrvQW2/view?usp=share_link'],
 ];
 
 function Reveal({ children, className = '' }) {
@@ -187,7 +187,7 @@ export default function App() {
 
       <section className="section-wrap content-section credentials-section" id="credentials">
         <Reveal><SectionHeading eyebrow="CONTINUOUS LEARNING" title="Certifications & education" note="Cloud, DevOps and foundational data/AI learning." /></Reveal>
-        <div className="credentials-layout"><div className="cert-list">{certifications.map(([issuer, title, date]) => <Reveal key={title}>{issuer === 'KodeKloud' ? <a className="cert-row cert-row-link" href="https://drive.google.com/file/d/1I4fsPmLCRbHQSKOZrXOsT0miBjGrvQW2/view?usp=share_link" target="_blank" rel="noreferrer" aria-label="Open KodeKloud Kubernetes for the Absolute Beginners certificate"><span className="cert-icon"><BadgeCheck size={18} /></span><div className="cert-copy"><span className="cert-issuer">{issuer}</span><h3>{title}</h3></div><span className="cert-date">{date}</span><ArrowUpRight className="cert-link-arrow" size={16} /></a> : <div className="cert-row"><span className="cert-icon"><BadgeCheck size={18} /></span><div className="cert-copy"><span className="cert-issuer">{issuer}</span><h3>{title}</h3></div><span className="cert-date">{date}</span></div>}</Reveal>)}</div>
+        <div className="credentials-layout"><div className="cert-list">{certifications.map(([issuer, title, date, url]) => <Reveal key={title}><a className="cert-row cert-row-link" href={url} target="_blank" rel="noreferrer" aria-label={`Open ${issuer} certification: ${title}`}><span className="cert-icon"><BadgeCheck size={18} /></span><div className="cert-copy"><span className="cert-issuer">{issuer}</span><h3>{title}</h3></div>{date && <span className="cert-date">{date}</span>}<ArrowUpRight className="cert-link-arrow" size={16} /></a></Reveal>)}</div>
           <Reveal><aside className="education-card"><span className="education-icon"><GraduationCap size={22} /></span><span className="eyebrow">EDUCATION</span><h3>B.Tech (Hons.), Computer Science — Cloud Computing</h3><p>Graphic Era Hill University</p><span className="education-location">Dehradun, Uttarakhand, India</span></aside></Reveal>
         </div>
       </section>
