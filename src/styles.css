@@ -131,3 +131,34 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 :root[data-theme="dark"] .azure-logo{
   color:#2865dc!important;
 }
+
+
+/* Refine the Email and GitHub marks in the contact section */
+.contact-links .contact-link-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  padding:0;
+  line-height:0;
+  overflow:visible;
+}
+.contact-links .contact-link-icon svg{
+  display:block;
+  flex:none;
+  width:28px;
+  height:28px;
+  max-width:none;
+  max-height:none;
+  overflow:visible;
+}
+.contact-links .contact-email svg{
+  width:29px;
+  height:29px;
+}
+.contact-links .contact-github svg{
+  width:28px;
+  height:28px;
+}
