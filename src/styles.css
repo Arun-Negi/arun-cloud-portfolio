@@ -93,3 +93,22 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
   border-radius:12px;
   box-shadow:0 8px 22px rgba(28,41,59,.08);
 }
+
+
+/* Keep hero illustration cards transparent in both themes */
+.cloud-core,
+:root[data-theme="dark"] .cloud-core,
+:root:not([data-theme="dark"]) .cloud-core{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.float-card,
+:root[data-theme="dark"] .float-card,
+:root:not([data-theme="dark"]) .float-card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
