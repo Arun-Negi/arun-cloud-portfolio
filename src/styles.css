@@ -67,3 +67,14 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 .cert-link-arrow{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--blue);opacity:0;transition:opacity .2s ease,right .2s ease}
 .cert-row-link:hover .cert-link-arrow,.cert-row-link:focus-visible .cert-link-arrow{opacity:1;right:10px}
 :root[data-theme="dark"] .cert-row-link:hover{background:#1c293b}
+
+
+/* Transparent, brand-coloured contact icons */
+.contact-link-icon{background:transparent!important;border:0!important;border-radius:0!important;width:42px;height:42px;flex:0 0 42px;box-shadow:none!important}
+.contact-link-icon svg{width:25px;height:25px;stroke-width:2.1}
+.contact-email{color:#EA4335!important;background:transparent!important;border-radius:0!important}
+.contact-linkedin{color:#0A66C2!important;background:transparent!important;border-radius:0!important}
+.contact-github{color:#F0F6FC!important;background:transparent!important;border-radius:0!important}
+:root[data-theme="dark"] .contact-email,:root[data-theme="dark"] .contact-linkedin,:root[data-theme="dark"] .contact-github{background:transparent!important}
+.contact-links>a:hover .contact-link-icon{transform:translateY(-2px);filter:drop-shadow(0 2px 5px currentColor)}
+.contact-link-icon{transition:transform .2s ease,filter .2s ease}
