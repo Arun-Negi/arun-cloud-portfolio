@@ -154,9 +154,9 @@ export default function App() {
         </div>
         <div className="hero-visual" aria-label="Cloud infrastructure illustration">
           <div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
-          <div className="cloud-core"><Cloud size={54} strokeWidth={1.4} /><span>AZURE</span></div>
-          <div className="float-card card-terraform"><GitBranch size={17} /><span><b>Terraform</b><small>Infrastructure as code</small></span></div>
-          <div className="float-card card-automation"><Workflow size={17} /><span><b>Automation</b><small>Repeatable workflows</small></span></div>
+          <div className="cloud-core"><svg className="azure-logo" viewBox="0 0 64 64" role="img" aria-label="Microsoft Azure logo"><path d="M25 5h17L17 54H2L25 5Z" fill="currentColor"/><path d="M43 5 62 54H27l9-13h8L31 23 43 5Z" fill="currentColor" opacity=".78"/></svg><span>AZURE</span></div>
+          <div className="float-card card-terraform"><svg className="terraform-logo" viewBox="0 0 32 32" role="img" aria-label="Terraform logo"><path fill="currentColor" d="M3 2 13 8v11L3 13V2Zm13 7 10 6v11l-10-6V9Zm0-14 10 6v11L16 6V-5Z" transform="translate(0 7)"/><path fill="currentColor" d="M16 23 26 29v-8l-10-6v8Z" opacity=".72"/></svg><span><b>Terraform</b><small>Infrastructure as code</small></span></div>
+          <div className="float-card card-automation"><Workflow className="automation-logo" size={20} strokeWidth={1.8} /><span><b>Automation</b><small>Repeatable workflows</small></span></div>
           <div className="float-card card-security"><ShieldCheck size={17} /><span><b>Governance</b><small>Secure by design</small></span></div>
           <div className="visual-caption">DESIGN · AUTOMATE · OPTIMIZE</div>
         </div>
