@@ -56,3 +56,14 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 :root[data-theme="dark"] .header-cta{background:var(--surface);border-color:#334761;color:#a8c4ff}
 :root[data-theme="dark"] .button-primary{background:#dce7f7;color:#152033}
 @media(max-width:650px){.header-actions{gap:8px}.theme-switch{gap:1px;padding:3px}.theme-option{width:27px;height:27px}.header-cta{gap:5px}}
+
+
+/* Make the complete KodeKloud certification row feel clickable */
+.cert-row-link{position:relative;padding-right:28px;border-radius:10px;transition:background .2s ease,box-shadow .2s ease,padding-left .2s ease}
+.cert-row-link:hover{background:var(--surface-soft);box-shadow:inset 0 0 0 1px var(--border-color);padding-left:10px}
+.cert-row-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.cert-row-link .cert-issuer{transition:color .2s ease}
+.cert-row-link:hover .cert-issuer,.cert-row-link:hover .cert-copy h3{color:var(--blue)}
+.cert-link-arrow{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--blue);opacity:0;transition:opacity .2s ease,right .2s ease}
+.cert-row-link:hover .cert-link-arrow,.cert-row-link:focus-visible .cert-link-arrow{opacity:1;right:10px}
+:root[data-theme="dark"] .cert-row-link:hover{background:#1c293b}
