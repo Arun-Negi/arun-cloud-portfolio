@@ -123,3 +123,11 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
   filter:drop-shadow(0 8px 16px #0078d422)!important;
   opacity:1!important;
 }
+
+
+/* Azure SVG uses currentColor, so set its own colour rather than inheriting
+   the dark-mode text colour from .cloud-core. */
+.azure-logo,
+:root[data-theme="dark"] .azure-logo{
+  color:#2865dc!important;
+}
