@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import {
   ArrowDownRight, ArrowUpRight, Cloud, Code2, GitBranch, Mail, MapPin,
   FileText, Linkedin, Github, ShieldCheck, Workflow, Server, Terminal,
@@ -194,5 +195,6 @@ export default function App() {
       <section className="contact-section" id="contact"><div className="section-wrap contact-inner"><Reveal><div><span className="eyebrow">GET IN TOUCH</span><h2>Let’s build something<br /><span>reliable together.</span></h2><p>For cloud infrastructure, automation and engineering conversations, feel free to connect.</p></div></Reveal><Reveal><div className="contact-links"><a href="mailto:heyarunnegi@gmail.com"><span className="contact-link-icon contact-email"><Mail size={18} /></span><span><small>Email</small><b>heyarunnegi@gmail.com</b></span><ArrowUpRight size={17} /></a><a href="https://linkedin.com/in/aroonnegi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-linkedin"><Linkedin size={18} /></span><span><small>LinkedIn</small><b>linkedin.com/in/aroonnegi</b></span><ArrowUpRight size={17} /></a><a href="https://github.com/Arun-Negi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-github"><Github size={18} /></span><span><small>GitHub</small><b>github.com/Arun-Negi</b></span><ArrowUpRight size={17} /></a></div></Reveal></div></section>
     </main>
     <footer className="site-footer"><div className="section-wrap footer-inner"><a className="wordmark" href="#home"><span className="wordmark-mark">A</span><span>Arun Negi<span className="wordmark-dot">.</span></span></a><span>Cloud infrastructure · Automation · Continuous improvement</span><a href="#home" className="back-top">Back to top ↑</a></div></footer>
+    <Analytics />
   </>;
 }
