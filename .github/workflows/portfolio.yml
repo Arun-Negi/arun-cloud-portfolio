@@ -1,0 +1,45 @@
+name: Validate portfolio and resume
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "public/resume.pdf"
+      - "src/**"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.*"
+      - ".github/workflows/portfolio.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Validate resume PDF
+        run: |
+          test -s public/resume.pdf
+          signature="$(head -c 5 public/resume.pdf)"
+          test "$signature" = "%PDF-"
+          echo "Resume PDF exists and has a valid PDF file signature."
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build portfolio
+        run: npm run build
