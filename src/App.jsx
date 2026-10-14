@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   ArrowDownRight, ArrowUpRight, Cloud, Code2, GitBranch, Mail, MapPin,
   FileText, Linkedin, Github, ShieldCheck, Workflow, Server, Terminal,
-  GraduationCap, BadgeCheck, Menu
+  GraduationCap, BadgeCheck, Menu, Sun, Moon, Monitor
 } from 'lucide-react';
 
 const skills = [
@@ -89,6 +89,29 @@ function ExperienceCard({ job, index }) {
 }
 
 export default function App() {
+
+  const [themePreference, setThemePreference] = useState(() => {
+    try { return localStorage.getItem('portfolio-theme') || 'system'; }
+    catch { return 'system'; }
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const applyTheme = () => {
+      const resolved = themePreference === 'system' ? (media.matches ? 'dark' : 'light') : themePreference;
+      root.dataset.theme = resolved;
+      root.style.colorScheme = resolved;
+    };
+    applyTheme();
+    try { localStorage.setItem('portfolio-theme', themePreference); } catch {}
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', applyTheme);
+      return () => media.removeEventListener('change', applyTheme);
+    }
+    media.addListener(applyTheme);
+    return () => media.removeListener(applyTheme);
+  }, [themePreference]);
   useEffect(() => {
     const links = document.querySelectorAll('a[href^="#"]');
     const handleClick = event => {
@@ -106,7 +129,14 @@ export default function App() {
       <nav className="main-nav" aria-label="Main navigation">
         <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
       </nav>
-      <a className="header-cta" href="#contact">Let’s connect <ArrowUpRight size={15} /></a>
+      <div className="header-actions">
+        <div className="theme-switch" role="group" aria-label="Color theme">
+          <button type="button" className={themePreference === 'light' ? 'theme-option is-active' : 'theme-option'} onClick={() => setThemePreference('light')} aria-label="Light theme" aria-pressed={themePreference === 'light'} title="Light"><Sun size={15} /></button>
+          <button type="button" className={themePreference === 'dark' ? 'theme-option is-active' : 'theme-option'} onClick={() => setThemePreference('dark')} aria-label="Dark theme" aria-pressed={themePreference === 'dark'} title="Dark"><Moon size={15} /></button>
+          <button type="button" className={themePreference === 'system' ? 'theme-option is-active' : 'theme-option'} onClick={() => setThemePreference('system')} aria-label="Use system theme" aria-pressed={themePreference === 'system'} title="System"><Monitor size={15} /></button>
+        </div>
+        <a className="header-cta" href="#contact">Let’s connect <ArrowUpRight size={15} /></a>
+      </div>
     </header>
 
     <main>
