@@ -112,3 +112,14 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
   border-radius:0!important;
   box-shadow:none!important;
 }
+
+
+/* Preserve the Azure logo's original blue in both themes */
+.azure-logo{
+  filter:drop-shadow(0 8px 16px #0078d422)!important;
+  opacity:1!important;
+}
+:root[data-theme="dark"] .azure-logo{
+  filter:drop-shadow(0 8px 16px #0078d422)!important;
+  opacity:1!important;
+}
