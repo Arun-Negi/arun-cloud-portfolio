@@ -185,3 +185,34 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 :root[data-theme="dark"] .project-icon{background:#20324b;color:#9bbcff}
 :root[data-theme="dark"] .project-kicker{color:#a6b3c6}
 @media(max-width:650px){.projects-grid{grid-template-columns:1fr;gap:13px}.project-card{padding:22px}.project-card h3{font-size:19px}.project-card-top{margin-bottom:19px}}
+
+/* Give featured projects a dedicated showcase identity, separate from career and skills */
+.projects-showcase{position:relative;overflow:hidden;background:radial-gradient(ellipse at 8% 12%,rgba(48,111,222,.24),transparent 34%),radial-gradient(ellipse at 92% 86%,rgba(70,105,180,.16),transparent 32%),#142238;border-top:1px solid #263b59;border-bottom:1px solid #263b59;color:#f5f8ff}
+.projects-showcase:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(rgba(180,202,238,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(180,202,238,.15) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent)}
+.projects-section{position:relative;z-index:1;padding-top:94px;padding-bottom:96px;scroll-margin-top:88px}
+.projects-showcase .section-heading h2{color:#f5f8ff}
+.projects-showcase .section-heading>p{color:#b7c6dc;max-width:410px}
+.projects-showcase .eyebrow{color:#9dbcf5}
+.projects-showcase .section-heading{margin-bottom:34px}
+.projects-showcase .project-card{background:rgba(255,255,255,.97);border-color:rgba(208,221,243,.5);box-shadow:0 18px 45px rgba(3,10,22,.18)}
+.projects-showcase .project-card:hover{border-color:#8eb5ff;box-shadow:0 24px 55px rgba(3,10,22,.3)}
+.projects-showcase .project-card-featured{border-top:3px solid #76a5ff}
+.projects-showcase .project-card:not(.project-card-featured){border-top:3px solid #9aabc5}
+.projects-showcase .project-kicker{color:#62738c}
+.projects-showcase .project-icon{background:#e8efff;color:#245fd0}
+.projects-showcase .project-tags span{background:#f2f5fa;border-color:#e1e8f2;color:#53647b}
+.projects-showcase .project-links{border-top-color:#e1e7f0}
+:root[data-theme="dark"] .projects-showcase{background:radial-gradient(ellipse at 8% 12%,rgba(39,91,176,.22),transparent 34%),radial-gradient(ellipse at 92% 86%,rgba(54,81,139,.16),transparent 32%),#090f1b;border-color:#1f3048}
+:root[data-theme="dark"] .projects-showcase .section-heading h2{color:#f0f5ff}
+:root[data-theme="dark"] .projects-showcase .section-heading>p{color:#a9b9d0}
+:root[data-theme="dark"] .projects-showcase .project-card{background:#141f30;border-color:#2b3b53;box-shadow:0 18px 45px rgba(0,0,0,.2)}
+:root[data-theme="dark"] .projects-showcase .project-card:hover{border-color:#6f91c5;box-shadow:0 24px 55px rgba(0,0,0,.34)}
+:root[data-theme="dark"] .projects-showcase .project-card-featured{border-top-color:#76a5ff}
+:root[data-theme="dark"] .projects-showcase .project-card:not(.project-card-featured){border-top-color:#7287a7}
+:root[data-theme="dark"] .projects-showcase .project-card h3{color:#f0f5ff}
+:root[data-theme="dark"] .projects-showcase .project-card>p{color:#b1bfd2}
+:root[data-theme="dark"] .projects-showcase .project-kicker{color:#a5b8d5}
+:root[data-theme="dark"] .projects-showcase .project-icon{background:#203656;color:#a9c7ff}
+:root[data-theme="dark"] .projects-showcase .project-tags span{background:#1b2a40;border-color:#30435e;color:#c0cde0}
+:root[data-theme="dark"] .projects-showcase .project-links{border-top-color:#2d3c52}
+@media(max-width:650px){.projects-section{padding-top:70px;padding-bottom:72px}.projects-showcase .section-heading{margin-bottom:25px}}
