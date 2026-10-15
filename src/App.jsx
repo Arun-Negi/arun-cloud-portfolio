@@ -91,6 +91,7 @@ function ExperienceCard({ job, index }) {
 
 export default function App() {
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [themePreference, setThemePreference] = useState(() => {
     try { return localStorage.getItem('portfolio-theme') || 'system'; }
     catch { return 'system'; }
@@ -127,8 +128,9 @@ export default function App() {
   return <>
     <header className="site-header">
       <a className="wordmark" href="#home" aria-label="Arun Negi home"><span className="wordmark-mark">A</span><span>Arun Negi<span className="wordmark-dot">.</span></span></a>
-      <nav className="main-nav" aria-label="Main navigation">
-        <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
+      <button className="mobile-menu-toggle" type="button" onClick={() => setMobileMenuOpen(value => !value)} aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileMenuOpen} aria-controls="primary-navigation"><Menu size={20} /></button>
+      <nav className={`main-nav ${mobileMenuOpen ? 'is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">
+        <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a><a href="#experience" onClick={() => setMobileMenuOpen(false)}>Experience</a><a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a><a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a><a href="#credentials" onClick={() => setMobileMenuOpen(false)}>Credentials</a><a className="mobile-contact-link" href="#contact" onClick={() => setMobileMenuOpen(false)}>Let’s connect <ArrowUpRight size={15} /></a>
       </nav>
       <div className="header-actions">
         <div className="theme-switch" role="group" aria-label="Color theme">
