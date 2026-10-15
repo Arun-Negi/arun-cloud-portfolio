@@ -128,7 +128,7 @@ export default function App() {
     <header className="site-header">
       <a className="wordmark" href="#home" aria-label="Arun Negi home"><span className="wordmark-mark">A</span><span>Arun Negi<span className="wordmark-dot">.</span></span></a>
       <nav className="main-nav" aria-label="Main navigation">
-        <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
       </nav>
       <div className="header-actions">
         <div className="theme-switch" role="group" aria-label="Color theme">
@@ -177,6 +177,26 @@ export default function App() {
         <Reveal><SectionHeading eyebrow="CAREER JOURNEY" title="Experience" note="Cloud engineering across enterprise environments, from automation and governance to large-scale migration." /></Reveal>
         <div className="timeline">
           {experience.map((job, index) => <ExperienceCard key={job.company} job={job} index={index} />)}
+        </div>
+      </section>
+
+      <section className="section-wrap content-section projects-section" id="projects">
+        <Reveal><SectionHeading eyebrow="SELECTED WORK" title="Featured projects" note="Practical projects focused on repeatable Azure infrastructure, policy-driven provisioning and a simpler developer experience." /></Reveal>
+        <div className="projects-grid">
+          <Reveal className="project-reveal"><article className="project-card project-card-featured">
+            <div className="project-card-top"><span className="project-icon"><Cloud size={22} /></span><span className="project-kicker">01 / INFRASTRUCTURE</span></div>
+            <h3>Azure Terraform Infrastructure Platform</h3>
+            <p>A modular infrastructure-as-code platform for standardized Azure provisioning, with reusable Terraform modules, naming conventions and governance-focused validation.</p>
+            <div className="project-tags"><span>Azure</span><span>Terraform</span><span>GitHub Actions</span><span>Policy & validation</span></div>
+            <div className="project-links"><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-platform" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
+          </article></Reveal>
+          <Reveal className="project-reveal"><article className="project-card">
+            <div className="project-card-top"><span className="project-icon"><Workflow size={22} /></span><span className="project-kicker">02 / SELF-SERVICE PORTAL</span></div>
+            <h3>Terraform Infrastructure Portal</h3>
+            <p>A self-service web interface for Azure infrastructure requests, using dynamic forms and straightforward JSON inputs with GitHub-based change management and approval workflows.</p>
+            <div className="project-tags"><span>Next.js</span><span>TypeScript</span><span>Terraform</span><span>Vercel</span></div>
+            <div className="project-links"><a href="https://terraform-infrastructure-portal-1cp.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
+          </article></Reveal>
         </div>
       </section>
 
