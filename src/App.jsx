@@ -180,7 +180,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section-wrap content-section projects-section" id="projects">
+      <section className="projects-showcase" id="projects"><div className="section-wrap content-section projects-section">
         <Reveal><SectionHeading eyebrow="SELECTED WORK" title="Featured projects" note="Practical projects focused on repeatable Azure infrastructure, policy-driven provisioning and a simpler developer experience." /></Reveal>
         <div className="projects-grid">
           <Reveal className="project-reveal"><article className="project-card project-card-featured">
@@ -197,6 +197,7 @@ export default function App() {
             <div className="project-tags"><span>Next.js</span><span>TypeScript</span><span>Terraform</span><span>Vercel</span></div>
             <div className="project-links"><a href="https://terraform-infrastructure-portal-1cp.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
+        </div>
         </div>
       </section>
 
