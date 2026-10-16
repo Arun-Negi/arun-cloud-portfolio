@@ -512,3 +512,121 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
   .projects-showcase .project-card > p,
   .projects-showcase .project-tags { transition: none; }
 }
+
+
+/* Refined project cards: compact default state, title moves beside icon on hover. */
+@media (hover:hover) and (pointer:fine) {
+  .projects-grid { align-items: start; gap: 18px; }
+  .projects-grid > .project-reveal { align-self: start; }
+  .projects-showcase .project-card {
+    height: 270px;
+    min-height: 270px;
+    padding: 21px;
+    border-radius: 16px;
+    transition: height .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .projects-showcase .project-card:hover,
+  .projects-showcase .project-card:focus-within {
+    height: 340px;
+    min-height: 340px;
+  }
+  .projects-showcase .project-card-top {
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 17px;
+    transition: margin .2s ease, gap .2s ease;
+  }
+  .projects-showcase .project-kicker { margin-left: auto; font-size: 8px; }
+  .projects-showcase .project-card h3 {
+    font-size: 19px;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    max-width: 95%;
+    transition: opacity .18s ease, transform .2s ease, font-size .2s ease;
+  }
+  .projects-showcase .project-card > p {
+    font-size: 11px;
+    line-height: 1.65;
+    margin: 0 0 13px;
+    transition: opacity .16s ease, transform .16s ease;
+  }
+  .projects-showcase .project-tags {
+    gap: 6px;
+    margin: 0;
+    transition: opacity .16s ease, transform .16s ease;
+  }
+  .projects-showcase .project-tags span { padding: 5px 7px; font-size: 9px; }
+  .projects-showcase .project-hover-details,
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details {
+    position: absolute;
+    top: 78px;
+    left: 21px;
+    right: 21px;
+    bottom: 18px;
+    max-height: none;
+    overflow: auto;
+    opacity: 0;
+    transform: translateY(5px);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--surface);
+    transition: opacity .18s ease, transform .18s ease;
+    pointer-events: none;
+  }
+  .projects-showcase .project-card:hover .project-card-top,
+  .projects-showcase .project-card:focus-within .project-card-top {
+    gap: 9px;
+    margin-bottom: 12px;
+  }
+  .projects-showcase .project-card:hover .project-card h3,
+  .projects-showcase .project-card:focus-within .project-card h3 {
+    font-size: 15px;
+    margin: 0;
+  }
+  .projects-showcase .project-card:hover > p,
+  .projects-showcase .project-card:focus-within > p,
+  .projects-showcase .project-card:hover > .project-tags,
+  .projects-showcase .project-card:focus-within > .project-tags {
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+  }
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details {
+    opacity: 1;
+    transform: translateY(0);
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    pointer-events: auto;
+  }
+  .projects-showcase .project-hover-details > p {
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 0 0 8px;
+  }
+  .projects-showcase .project-hover-details ul { gap: 6px; }
+  .projects-showcase .project-hover-details li { font-size: 9px; line-height: 1.4; }
+  .projects-showcase .project-hover-details li > svg { width: 13px; height: 13px; }
+  .projects-showcase .project-detail-label { margin-bottom: 6px; font-size: 8px; }
+  .projects-showcase .project-detail-outcome { margin-top: 7px; padding: 6px 8px; font-size: 7px; }
+}
+@media (min-width:651px) and (max-width:900px) and (hover:hover) and (pointer:fine) {
+  .projects-showcase .project-card { height: 285px; min-height: 285px; padding: 18px; }
+  .projects-showcase .project-card:hover,
+  .projects-showcase .project-card:focus-within { height: 350px; min-height: 350px; }
+  .projects-showcase .project-hover-details,
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details {
+    left: 18px; right: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-showcase .project-card,
+  .projects-showcase .project-card-top,
+  .projects-showcase .project-card h3,
+  .projects-showcase .project-card > p,
+  .projects-showcase .project-tags,
+  .projects-showcase .project-hover-details { transition: none; }
+}
