@@ -791,3 +791,48 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
   .projects-showcase .project-card:hover .project-hover-details,
   .projects-showcase .project-card:focus-within .project-hover-details { top: 100px; }
 }
+
+
+/* Softer, more deliberate project-card hover motion. */
+@media (hover: hover) and (pointer: fine) {
+  .projects-showcase .project-card h3 {
+    transition:
+      top 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      left 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      right 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      font-size 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      margin 320ms ease;
+  }
+  .projects-showcase .project-card > p {
+    transition:
+      top 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      left 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      right 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 260ms ease,
+      transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      font-size 320ms ease,
+      line-height 320ms ease;
+  }
+  .projects-showcase .project-card > .project-tags {
+    transition:
+      opacity 260ms ease,
+      transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .projects-showcase .project-hover-details {
+    transition:
+      opacity 360ms ease,
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .projects-showcase .project-card .project-kicker {
+    transition: opacity 260ms ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-showcase .project-card h3,
+  .projects-showcase .project-card > p,
+  .projects-showcase .project-card > .project-tags,
+  .projects-showcase .project-card .project-kicker,
+  .projects-showcase .project-hover-details {
+    transition: none !important;
+  }
+}
