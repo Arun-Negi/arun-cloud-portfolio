@@ -836,3 +836,102 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
     transition: none !important;
   }
 }
+
+
+/* Give the hover state enough room to read comfortably instead of squeezing
+   project copy into a narrow, tiny-text panel. Card size stays identical
+   between resting and hovered states. */
+@media (hover: hover) and (pointer: fine) {
+  .projects-showcase .project-card,
+  .projects-showcase .project-card:hover,
+  .projects-showcase .project-card:focus-within {
+    height: 390px;
+    min-height: 390px;
+  }
+  .projects-showcase .project-card:hover > p,
+  .projects-showcase .project-card:focus-within > p {
+    top: 49px;
+    left: 80px;
+    right: 22px;
+    font-size: 10px;
+    line-height: 1.45;
+    -webkit-line-clamp: 2;
+  }
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details {
+    top: 112px;
+    bottom: 58px;
+    left: 22px;
+    right: 22px;
+    padding-top: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+  }
+  .projects-showcase .project-hover-details > p {
+    font-size: 12px;
+    line-height: 1.65;
+    margin: 0 0 12px;
+    max-width: 62ch;
+  }
+  .projects-showcase .project-hover-details ul {
+    gap: 9px;
+    margin-top: 8px;
+  }
+  .projects-showcase .project-hover-details li {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+  .projects-showcase .project-hover-details li > svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+  }
+  .projects-showcase .project-detail-label {
+    margin-bottom: 8px;
+    font-size: 9px;
+    letter-spacing: .08em;
+  }
+  .projects-showcase .project-detail-outcome {
+    margin-top: 10px;
+    padding: 9px 11px;
+    font-size: 9px;
+    line-height: 1.5;
+  }
+  .projects-showcase .project-links {
+    left: 22px;
+    right: 22px;
+    bottom: 14px;
+  }
+}
+@media (min-width: 651px) and (max-width: 900px) and (hover: hover) and (pointer: fine) {
+  .projects-showcase .project-card,
+  .projects-showcase .project-card:hover,
+  .projects-showcase .project-card:focus-within {
+    height: 390px;
+    min-height: 390px;
+    padding: 18px;
+  }
+  .projects-showcase .project-card:hover h3,
+  .projects-showcase .project-card:focus-within h3 {
+    left: 70px;
+    right: 16px;
+    top: 23px;
+    font-size: 14px;
+  }
+  .projects-showcase .project-card:hover > p,
+  .projects-showcase .project-card:focus-within > p {
+    left: 70px;
+    right: 16px;
+    top: 45px;
+    font-size: 9px;
+  }
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details {
+    left: 18px;
+    right: 18px;
+    top: 108px;
+    bottom: 58px;
+  }
+  .projects-showcase .project-links { left: 18px; right: 18px; }
+}
