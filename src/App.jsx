@@ -92,6 +92,7 @@ function ExperienceCard({ job, index }) {
 export default function App() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedProjectDetails, setExpandedProjectDetails] = useState({ platform: false, portal: false });
   const [themePreference, setThemePreference] = useState(() => {
     try { return localStorage.getItem('portfolio-theme') || 'system'; }
     catch { return 'system'; }
@@ -185,7 +186,8 @@ export default function App() {
       <section className="projects-showcase" id="projects"><div className="section-wrap content-section projects-section">
         <Reveal><SectionHeading eyebrow="SELECTED WORK" title="Featured projects" note="Practical projects focused on repeatable Azure infrastructure, policy-driven provisioning and a simpler developer experience." /></Reveal>
         <div className="projects-grid">
-          <Reveal className="project-reveal"><article className="project-card project-card-featured">
+          <Reveal className="project-reveal"><article className={`project-card project-card-featured ${expandedProjectDetails.platform ? "is-details-open" : ""}`}>
+            <button className="project-details-toggle" type="button" onClick={() => setExpandedProjectDetails(value => ({ ...value, platform: !value.platform }))} aria-expanded={expandedProjectDetails.platform}>{expandedProjectDetails.platform ? "Hide project details" : "Explore project details"} <span aria-hidden="true">{expandedProjectDetails.platform ? "−" : "+"}</span></button>
             <div className="project-card-top"><span className="project-icon"><Cloud size={22} /></span><span className="project-kicker">01 / INFRASTRUCTURE</span></div>
             <h3>Azure Terraform Infrastructure Platform</h3>
             <p>A guardrail-first Azure infrastructure platform that validates requests early and standardizes how teams provision compliant resources.</p>
@@ -202,7 +204,8 @@ export default function App() {
             </div>
             <div className="project-links"><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-platform" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
-          <Reveal className="project-reveal"><article className="project-card">
+          <Reveal className="project-reveal"><article className={`project-card ${expandedProjectDetails.portal ? "is-details-open" : ""}`}>
+            <button className="project-details-toggle" type="button" onClick={() => setExpandedProjectDetails(value => ({ ...value, portal: !value.portal }))} aria-expanded={expandedProjectDetails.portal}>{expandedProjectDetails.portal ? "Hide project details" : "Explore project details"} <span aria-hidden="true">{expandedProjectDetails.portal ? "−" : "+"}</span></button>
             <div className="project-card-top"><span className="project-icon"><Workflow size={22} /></span><span className="project-kicker">02 / SELF-SERVICE PORTAL</span></div>
             <h3>Terraform Infrastructure Portal</h3>
             <p>A self-service interface for creating clearer Azure infrastructure requests without asking every user to hand-author complex Terraform inputs.</p>
