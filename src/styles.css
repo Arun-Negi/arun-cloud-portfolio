@@ -302,3 +302,39 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
   .cert-date{font-size:8px}
 }
 @media(hover:none){.projects-showcase .project-card:hover{transform:none}}
+
+
+/* Project cards reveal the engineering story on hover or keyboard focus */
+.projects-showcase .project-card{overflow:hidden}
+.project-hover-details{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(8px);
+  margin:0;
+  padding:0;
+  border-top:0 solid var(--border-color);
+  transition:max-height .4s ease,opacity .25s ease,transform .3s ease,margin .3s ease,padding .3s ease,border-width .3s ease;
+}
+.projects-showcase .project-card:hover .project-hover-details,
+.projects-showcase .project-card:focus-within .project-hover-details{
+  max-height:520px;
+  opacity:1;
+  transform:translateY(0);
+  margin:2px 0 18px;
+  padding:17px 0 0;
+  border-top-width:1px;
+}
+.project-detail-label{display:block;font-size:9px;font-weight:800;letter-spacing:1.35px;color:var(--blue);margin-bottom:9px}
+.project-hover-details>p{font-size:11px;line-height:1.75;color:var(--text-muted);margin:0 0 13px}
+.project-hover-details ul{list-style:none;display:grid;gap:11px;margin:0;padding:0}
+.project-hover-details li{display:grid;grid-template-columns:17px minmax(0,1fr);gap:8px;align-items:start;font-size:10px;line-height:1.7;color:var(--text-muted)}
+.project-hover-details li>svg{margin-top:2px;color:var(--blue)}
+.project-hover-details li b{color:var(--text-main);font-weight:800}
+.project-detail-outcome{display:block;margin-top:14px;padding:9px 10px;border-radius:7px;background:var(--surface-soft);color:var(--text-muted);font-size:8px;line-height:1.6;font-weight:800;letter-spacing:.65px}
+@media(hover:none){
+  .project-hover-details{max-height:none;opacity:1;transform:none;margin:2px 0 18px;padding:17px 0 0;border-top-width:1px}
+}
+@media(prefers-reduced-motion:reduce){
+  .project-hover-details{transition:none}
+}
