@@ -338,3 +338,9 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 @media(prefers-reduced-motion:reduce){
   .project-hover-details{transition:none}
 }
+
+
+/* Keep project cards independent: expanding one must not stretch its sibling */
+.projects-grid{align-items:start}
+.projects-grid>.project-reveal{align-self:start;min-width:0}
+.projects-grid .project-card{height:auto;align-self:start}
