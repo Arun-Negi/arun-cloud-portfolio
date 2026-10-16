@@ -188,15 +188,35 @@ export default function App() {
           <Reveal className="project-reveal"><article className="project-card project-card-featured">
             <div className="project-card-top"><span className="project-icon"><Cloud size={22} /></span><span className="project-kicker">01 / INFRASTRUCTURE</span></div>
             <h3>Azure Terraform Infrastructure Platform</h3>
-            <p>A modular infrastructure-as-code platform for standardized Azure provisioning, with reusable Terraform modules, naming conventions and governance-focused validation.</p>
+            <p>A guardrail-first Azure infrastructure platform that validates requests early and standardizes how teams provision compliant resources.</p>
             <div className="project-tags"><span>Azure</span><span>Terraform</span><span>GitHub Actions</span><span>Policy & validation</span></div>
+            <div className="project-hover-details">
+              <span className="project-detail-label">THE ENGINEERING IDEA</span>
+              <p>Make the safe path the easy path: catch invalid configuration before Terraform reaches apply, rather than discovering avoidable errors at the end of a deployment.</p>
+              <ul>
+                <li><ShieldCheck size={15} /><span><b>Governance guardrails</b> — reusable modules designed to apply organizational standards, with Azure Policy as a complementary compliance layer.</span></li>
+                <li><Code2 size={15} /><span><b>Shift-left validation</b> — readable JSON inputs, service-specific schemas, naming rules and resource constraints catch mistakes early.</span></li>
+                <li><Workflow size={15} /><span><b>Controlled delivery</b> — automated formatting, validation and plan/review workflows help teams inspect changes before approved deployment.</span></li>
+              </ul>
+              <span className="project-detail-outcome">GOAL · Fewer late-stage failures, clearer feedback, consistent infrastructure</span>
+            </div>
             <div className="project-links"><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-platform" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
           <Reveal className="project-reveal"><article className="project-card">
             <div className="project-card-top"><span className="project-icon"><Workflow size={22} /></span><span className="project-kicker">02 / SELF-SERVICE PORTAL</span></div>
             <h3>Terraform Infrastructure Portal</h3>
-            <p>A self-service web interface for Azure infrastructure requests, using dynamic forms and straightforward JSON inputs with GitHub-based change management and approval workflows.</p>
+            <p>A self-service interface for creating clearer Azure infrastructure requests without asking every user to hand-author complex Terraform inputs.</p>
             <div className="project-tags"><span>Next.js</span><span>TypeScript</span><span>Terraform</span><span>Vercel</span></div>
+            <div className="project-hover-details">
+              <span className="project-detail-label">THE DEVELOPER EXPERIENCE</span>
+              <p>Make infrastructure requests approachable through a guided UI while keeping changes reviewable and deployment separate from the request itself.</p>
+              <ul>
+                <li><Code2 size={15} /><span><b>Guided inputs</b> — dynamic forms and readable JSON help users express the resources they need.</span></li>
+                <li><ShieldCheck size={15} /><span><b>Validation first</b> — surface configuration issues early and align requests with the platform's service schemas and naming standards.</span></li>
+                <li><GitBranch size={15} /><span><b>Review before change</b> — GitHub-based change management and approvals support a deliberate infrastructure workflow.</span></li>
+              </ul>
+              <span className="project-detail-outcome">GOAL · A simpler request flow without bypassing governance</span>
+            </div>
             <div className="project-links"><a href="https://terraform-infrastructure-portal-1cp.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
         </div>
