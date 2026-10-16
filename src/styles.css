@@ -332,9 +332,29 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 .project-hover-details li>svg{margin-top:2px;color:var(--blue)}
 .project-hover-details li b{color:var(--text-main);font-weight:800}
 .project-detail-outcome{display:block;margin-top:14px;padding:9px 10px;border-radius:7px;background:var(--surface-soft);color:var(--text-muted);font-size:8px;line-height:1.6;font-weight:800;letter-spacing:.65px}
+/* Touch screens use an explicit per-card toggle instead of permanently open details */
+.project-details-toggle{display:none}
 @media(hover:none){
-  .project-hover-details{max-height:none;opacity:1;transform:none;margin:2px 0 18px;padding:17px 0 0;border-top-width:1px}
+  .projects-showcase .project-details-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+    margin:0 0 14px;padding:10px 12px;border:1px solid var(--border-color);border-radius:8px;
+    background:var(--surface-soft);color:var(--blue);font:700 11px 'DM Sans',sans-serif;
+    text-align:left;cursor:pointer
+  }
+  .project-details-toggle span{font-size:16px;line-height:1}
+  .projects-showcase .project-hover-details,
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details{
+    max-height:0;opacity:0;transform:translateY(8px);margin:0;padding:0;border-top-width:0;
+    pointer-events:none
+  }
+  .projects-showcase .project-card.is-details-open .project-hover-details{
+    max-height:700px;opacity:1;transform:none;margin:2px 0 18px;padding:17px 0 0;
+    border-top-width:1px;pointer-events:auto
+  }
 }
+.projects-showcase .project-details-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
 @media(prefers-reduced-motion:reduce){
   .project-hover-details{transition:none}
 }
