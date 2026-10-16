@@ -224,7 +224,7 @@ export default function App() {
               </ul>
               <span className="project-detail-outcome">GOAL · A simpler request flow without bypassing governance</span>
             </div>
-            <div className="project-links"><a href="https://terraform-infrastructure-portal-1cp.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
+            <div className="project-links"><a href="https://terraform-infrastructure-portal.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
         </div>
         </div>
