@@ -364,3 +364,58 @@ body{background:var(--page-bg);color:var(--text-main);transition:background-colo
 .projects-grid{align-items:start}
 .projects-grid>.project-reveal{align-self:start;min-width:0}
 .projects-grid .project-card{height:auto;align-self:start}
+
+/* Hover reveals project details in-place; the card dimensions stay stable. */
+@media (hover:hover) and (pointer:fine){
+  .projects-showcase .project-card{
+    height:480px;
+    min-height:480px;
+    box-sizing:border-box;
+  }
+  .projects-showcase .project-card>p,
+  .projects-showcase .project-card>.project-tags{
+    transition:opacity .18s ease,transform .18s ease;
+  }
+  .projects-showcase .project-card:hover>p,
+  .projects-showcase .project-card:focus-within>p,
+  .projects-showcase .project-card:hover>.project-tags,
+  .projects-showcase .project-card:focus-within>.project-tags{
+    opacity:0;
+    transform:translateY(-5px);
+    pointer-events:none;
+  }
+  .projects-showcase .project-hover-details,
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details{
+    position:absolute;
+    top:145px;
+    left:29px;
+    right:29px;
+    bottom:76px;
+    max-height:none;
+    overflow:auto;
+    opacity:0;
+    transform:translateY(8px);
+    margin:0;
+    padding:14px 0 0;
+    border-top:1px solid var(--border-color);
+    background:var(--surface);
+    transition:opacity .22s ease,transform .22s ease;
+    pointer-events:none;
+  }
+  .projects-showcase .project-card:hover .project-hover-details,
+  .projects-showcase .project-card:focus-within .project-hover-details{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .projects-showcase .project-hover-details>p{font-size:12px}
+  .projects-showcase .project-hover-details li{font-size:11px;line-height:1.65}
+  .projects-showcase .project-detail-outcome{font-size:9px}
+  :root[data-theme="dark"] .projects-showcase .project-hover-details{background:var(--surface)}
+}
+@media (prefers-reduced-motion:reduce){
+  .projects-showcase .project-card>p,
+  .projects-showcase .project-card>.project-tags{transition:none}
+}
+
