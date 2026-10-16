@@ -189,8 +189,10 @@ export default function App() {
           <Reveal className="project-reveal"><article className={`project-card project-card-featured ${expandedProjectDetails.platform ? "is-details-open" : ""}`}>
             <button className="project-details-toggle" type="button" onClick={() => setExpandedProjectDetails(value => ({ ...value, platform: !value.platform }))} aria-expanded={expandedProjectDetails.platform}>{expandedProjectDetails.platform ? "Hide project details" : "Explore project details"} <span aria-hidden="true">{expandedProjectDetails.platform ? "−" : "+"}</span></button>
             <div className="project-card-top"><span className="project-icon"><Cloud size={22} /></span><span className="project-kicker">01 / INFRASTRUCTURE</span></div>
-            <h3>Azure Terraform Infrastructure Platform</h3>
-            <p>A guardrail-first Azure infrastructure platform that validates requests early and standardizes how teams provision compliant resources.</p>
+            <div className="project-card-heading">
+              <h3>Azure Terraform Infrastructure Platform</h3>
+              <p>A guardrail-first Azure infrastructure platform that validates requests early and standardizes how teams provision compliant resources.</p>
+            </div>
             <div className="project-tags"><span>Azure</span><span>Terraform</span><span>GitHub Actions</span><span>Policy & validation</span></div>
             <div className="project-hover-details">
               <span className="project-detail-label">THE ENGINEERING IDEA</span>
@@ -207,8 +209,10 @@ export default function App() {
           <Reveal className="project-reveal"><article className={`project-card ${expandedProjectDetails.portal ? "is-details-open" : ""}`}>
             <button className="project-details-toggle" type="button" onClick={() => setExpandedProjectDetails(value => ({ ...value, portal: !value.portal }))} aria-expanded={expandedProjectDetails.portal}>{expandedProjectDetails.portal ? "Hide project details" : "Explore project details"} <span aria-hidden="true">{expandedProjectDetails.portal ? "−" : "+"}</span></button>
             <div className="project-card-top"><span className="project-icon"><Workflow size={22} /></span><span className="project-kicker">02 / SELF-SERVICE PORTAL</span></div>
-            <h3>Terraform Infrastructure Portal</h3>
-            <p>A self-service interface for creating clearer Azure infrastructure requests without asking every user to hand-author complex Terraform inputs.</p>
+            <div className="project-card-heading">
+              <h3>Terraform Infrastructure Portal</h3>
+              <p>A self-service interface for creating clearer Azure infrastructure requests without asking every user to hand-author complex Terraform inputs.</p>
+            </div>
             <div className="project-tags"><span>Next.js</span><span>TypeScript</span><span>Terraform</span><span>Vercel</span></div>
             <div className="project-hover-details">
               <span className="project-detail-label">THE DEVELOPER EXPERIENCE</span>
