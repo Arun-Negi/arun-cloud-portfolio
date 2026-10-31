@@ -327,3 +327,34 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+
+/* Touch-first project cards: details are explicitly expandable on tablets too. */
+@media (hover: none), (max-width: 520px) {
+  .project-card,
+  .project-card:hover,
+  .project-card:focus-within {
+    height: auto;
+    min-height: 0;
+  }
+  .project-details-toggle { display: flex; }
+  .project-hover-details,
+  .project-card:hover .project-hover-details,
+  .project-card:focus-within .project-hover-details {
+    position: static;
+    display: none;
+    inset: auto;
+    overflow: visible;
+    opacity: 1;
+    transform: none;
+    margin: 0;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--line);
+    pointer-events: auto;
+  }
+  .project-card.is-details-open .project-hover-details { display: block; }
+  .project-card:hover .project-tags,
+  .project-card:focus-within .project-tags { opacity: 1; transform: none; }
+  .project-card:hover .project-card-heading,
+  .project-card:focus-within .project-card-heading { transform: none; }
+}
