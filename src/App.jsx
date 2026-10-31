@@ -94,7 +94,7 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedProjectDetails, setExpandedProjectDetails] = useState({ platform: false, portal: false });
   const [themePreference, setThemePreference] = useState(() => {
-    try { return localStorage.getItem('portfolio-theme') || 'system'; }
+    try { return localStorage.getItem('portfolio-theme') || 'dark'; }
     catch { return 'system'; }
   });
 
@@ -155,13 +155,24 @@ export default function App() {
           </div>
           <div className="hero-meta"><span><MapPin size={15} /> Bengaluru, India</span><span><ShieldCheck size={15} /> Azure · Terraform · Automation</span></div>
         </div>
-        <div className="hero-visual" aria-label="Cloud infrastructure illustration">
-          <div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
-          <div className="cloud-core"><svg className="azure-logo" viewBox="0 0 64 64" role="img" aria-label="Microsoft Azure logo"><path d="M25 5h17L17 54H2L25 5Z" fill="currentColor"/><path d="M43 5 62 54H27l9-13h8L31 23 43 5Z" fill="currentColor" opacity=".78"/></svg><span>AZURE</span></div>
-          <div className="float-card card-terraform"><svg className="terraform-logo" viewBox="0 0 32 32" role="img" aria-label="Terraform logo"><path fill="currentColor" d="M3 2 13 8v11L3 13V2Zm13 7 10 6v11l-10-6V9Zm0-14 10 6v11L16 6V-5Z" transform="translate(0 7)"/><path fill="currentColor" d="M16 23 26 29v-8l-10-6v8Z" opacity=".72"/></svg><span><b>Terraform</b><small>Infrastructure as code</small></span></div>
-          <div className="float-card card-automation"><Workflow className="automation-logo" size={20} strokeWidth={1.8} /><span><b>Automation</b><small>Repeatable workflows</small></span></div>
-          <div className="float-card card-security"><ShieldCheck size={17} /><span><b>Governance</b><small>Secure by design</small></span></div>
-          <div className="visual-caption">DESIGN · AUTOMATE · OPTIMIZE</div>
+        <div className="hero-visual" aria-label="Illustrative Azure infrastructure topology">
+          <div className="topology-frame">
+            <div className="topology-toolbar"><span><i /> INFRASTRUCTURE MAP</span><span>AZURE / CENTRAL US</span></div>
+            <div className="topology-canvas">
+              <svg className="topology-lines" viewBox="0 0 560 390" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M280 188 H140 V95 H70 M280 188 H420 V95 H490 M280 188 H140 V292 H70 M280 188 H420 V292 H490 M280 188 V55 M280 188 V340" />
+                <path className="topology-lines-dash" d="M70 95 H140 V188 H280 M490 95 H420 V188 H280 M70 292 H140 V188 M490 292 H420 V188" />
+              </svg>
+              <div className="topology-node node-core"><span className="node-glyph"><Cloud size={22}/></span><b>Azure</b><small>Landing zone</small><em>ACTIVE</em></div>
+              <div className="topology-node node-network"><span className="node-glyph"><GitBranch size={18}/></span><b>Networking</b><small>VNet · NSG · DNS</small></div>
+              <div className="topology-node node-compute"><span className="node-glyph"><Server size={18}/></span><b>Compute</b><small>VMs · App services</small></div>
+              <div className="topology-node node-state"><span className="node-glyph"><Code2 size={18}/></span><b>Terraform</b><small>Versioned state</small></div>
+              <div className="topology-node node-policy"><span className="node-glyph"><ShieldCheck size={18}/></span><b>Governance</b><small>Policy · RBAC</small></div>
+              <div className="topology-node node-automation"><span className="node-glyph"><Workflow size={18}/></span><b>Automation</b><small>CI/CD · Python</small></div>
+            </div>
+            <div className="topology-legend"><span><i className="legend-live" /> Managed infrastructure</span><span><i className="legend-flow" /> Deployment flow</span><span>01—06 / SYSTEMS</span></div>
+          </div>
+          <div className="visual-note"><span className="visual-note-mark">↗</span><span><b>Designed for repeatability.</b><small>Governed · Observable · Maintainable</small></span></div>
         </div>
         <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDownRight size={17} /></a>
       </section>
@@ -224,7 +235,7 @@ export default function App() {
               </ul>
               <span className="project-detail-outcome">GOAL · A simpler request flow without bypassing governance</span>
             </div>
-            <div className="project-links"><a href="https://terraform-infrastructure-portal.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
+            <div className="project-links"><a href="https://terraform-infrastructure-portal.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
         </div>
         </div>
