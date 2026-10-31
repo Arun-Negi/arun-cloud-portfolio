@@ -146,14 +146,14 @@ export default function App() {
     <main>
       <section className="hero section-wrap" id="home">
         <div className="hero-copy">
-          <div className="availability"><span className="status-dot" /> CLOUD & INFRASTRUCTURE ENGINEER</div>
-          <h1>Building reliable cloud systems.<br /><span>Making infrastructure work smarter.</span></h1>
-          <p className="hero-lede">I’m Arun — a Senior Engineer focused on Azure infrastructure, automation, migrations and cloud cost optimization.</p>
+          <div className="availability"><span className="status-dot" /> CLOUD / DEVOPS ENGINEER</div>
+          <h1>Cloud infrastructure,<br /><span>engineered for what’s next.</span></h1>
+          <p className="hero-lede">I’m Arun, a Cloud / DevOps Engineer building dependable Azure platforms through infrastructure as code, automation, migration engineering and cost-aware operations.</p>
           <div className="hero-actions">
             <a className="button button-primary" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <FileText size={16} /></a>
             <a className="button button-secondary" href="https://github.com/Arun-Negi" target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={16} /></a>
           </div>
-          <div className="hero-meta"><span><MapPin size={15} /> Bengaluru, India</span><span><ShieldCheck size={15} /> Azure · Terraform · Automation</span></div>
+          <div className="hero-meta"><span><MapPin size={15} /> Bengaluru, India</span><span><ShieldCheck size={15} /> Open to global opportunities</span></div>
         </div>
         <div className="hero-visual" aria-label="Cloud infrastructure illustration">
           <div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
@@ -168,12 +168,25 @@ export default function App() {
 
       <section className="impact-band" id="about">
         <div className="section-wrap impact-grid">
-          <Reveal><div className="impact-intro"><span className="eyebrow">AT A GLANCE</span><h2>Engineering outcomes,<br />not just infrastructure.</h2><p>Practical cloud engineering with a focus on efficiency, governance and measurable impact.</p></div></Reveal>
+          <Reveal><div className="impact-intro"><span className="eyebrow">THE ENGINEERING POINT OF VIEW</span><h2>Make infrastructure<br />work better for people.</h2><p>I focus on the systems behind reliable delivery: clear guardrails, repeatable automation and cloud decisions that balance resilience with cost.</p></div></Reveal>
           <Reveal><div className="impact-stat"><span className="stat-value">$1.5M</span><span className="stat-label">Project savings</span><p>Contributed to the CloudX-to-KCloud migration.</p></div></Reveal>
           <Reveal><div className="impact-stat"><span className="stat-value">$136K</span><span className="stat-label">Cloud optimization</span><p>Independently delivered cost savings.</p></div></Reveal>
           <Reveal><div className="impact-stat"><span className="stat-value">600<span>+</span></span><span className="stat-label">Subscriptions</span><p>Azure Automation runbooks for IaaS and RBAC.</p></div></Reveal>
         </div>
         <p className="impact-footnote">Figures reflect contributions and achievements described in my resume.</p>
+      </section>
+
+      <section className="approach-section section-wrap" id="approach">
+        <div className="approach-intro">
+          <span className="eyebrow">HOW I WORK</span>
+          <h2>From cloud complexity<br /><span>to confident delivery.</span></h2>
+          <p>Good infrastructure is more than provisioning resources. It gives engineering teams a safe, understandable path from request to production — and keeps that platform efficient over time.</p>
+        </div>
+        <div className="approach-points">
+          <article><span>01</span><div><h3>Build repeatable foundations</h3><p>Use Terraform, reusable modules and clear standards to make infrastructure consistent and easier to maintain.</p></div></article>
+          <article><span>02</span><div><h3>Automate the operational work</h3><p>Turn manual cloud workflows into dependable Python, PowerShell and Azure Automation processes.</p></div></article>
+          <article><span>03</span><div><h3>Optimize with intent</h3><p>Approach migrations, governance and cost optimization as connected parts of a healthy cloud platform.</p></div></article>
+        </div>
       </section>
 
       <section className="section-wrap content-section" id="experience">
