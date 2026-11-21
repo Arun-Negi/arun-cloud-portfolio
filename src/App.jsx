@@ -225,7 +225,6 @@ export default function App() {
         <Reveal><SectionHeading eyebrow="SELECTED WORK" title="Featured projects" note="Two connected projects: a Terraform platform for governed provisioning, and a portal that makes infrastructure requests easier to submit." /></Reveal>
         <div className="projects-grid">
           <Reveal className="project-reveal"><article className="project-card project-card-featured">
-            <button className="project-details-toggle" type="button" aria-expanded={expandedProjectDetails.platform}>Project overview</button>
             <div className="project-card-top"><span className="project-icon"><Cloud size={22} /></span><span className="project-kicker">01 / INFRASTRUCTURE</span></div>
             <div className="project-card-heading">
               <h3>Azure Terraform Infrastructure Platform</h3>
@@ -245,7 +244,6 @@ export default function App() {
             <div className="project-links"><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-platform" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
           <Reveal className="project-reveal"><article className="project-card">
-            <button className="project-details-toggle" type="button" aria-expanded={expandedProjectDetails.portal}>Project overview</button>
             <div className="project-card-top"><span className="project-icon"><Workflow size={22} /></span><span className="project-kicker">02 / SELF-SERVICE PORTAL</span></div>
             <div className="project-card-heading">
               <h3>Terraform Infrastructure Portal</h3>
