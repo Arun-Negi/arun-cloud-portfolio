@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import {
   ArrowDownRight, ArrowUpRight, Cloud, Code2, GitBranch, Mail, MapPin,
@@ -66,6 +66,38 @@ function Reveal({ children, className = '' }) {
   return <div className={`reveal ${className}`}>{children}</div>;
 }
 
+function SquareCursor() {
+  const cursorRef = useRef(null);
+  useEffect(() => {
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!finePointer.matches || reducedMotion.matches) return;
+    const cursor = cursorRef.current;
+    const pieces = cursor?.querySelectorAll('span');
+    if (!cursor || !pieces?.length) return;
+    const move = (event) => {
+      cursor.classList.add('is-active');
+      pieces.forEach((piece) => {
+        piece.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+      });
+    };
+    const leave = () => cursor.classList.remove('is-active');
+    window.addEventListener('pointermove', move, { passive: true });
+    document.addEventListener('mouseleave', leave);
+    return () => {
+      window.removeEventListener('pointermove', move);
+      document.removeEventListener('mouseleave', leave);
+    };
+  }, []);
+  return <div className="square-cursor" ref={cursorRef} aria-hidden="true">
+    <span className="cursor-trail cursor-trail-4" />
+    <span className="cursor-trail cursor-trail-3" />
+    <span className="cursor-trail cursor-trail-2" />
+    <span className="cursor-trail cursor-trail-1" />
+    <span className="cursor-core" />
+  </div>;
+}
+
 function SectionHeading({ eyebrow, title, note }) {
   return <div className="section-heading"><div><span className="eyebrow">{eyebrow}</span><h2>{title}</h2></div>{note && <p>{note}</p>}</div>;
 }
@@ -92,7 +124,6 @@ function ExperienceCard({ job, index }) {
 export default function App() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedProjectDetails, setExpandedProjectDetails] = useState({ platform: false, portal: false });
   const [themePreference, setThemePreference] = useState(() => {
     try { return localStorage.getItem('portfolio-theme') || 'system'; }
     catch { return 'system'; }
@@ -127,6 +158,7 @@ export default function App() {
   }, []);
 
   return <>
+    <SquareCursor />
     <header className="site-header">
       <a className="wordmark" href="#home" aria-label="Arun Negi home"><span className="wordmark-mark">A</span><span>Arun Negi<span className="wordmark-dot">.</span></span></a>
       <button className="mobile-menu-toggle" type="button" onClick={() => setMobileMenuOpen(value => !value)} aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileMenuOpen} aria-controls="primary-navigation"><Menu size={20} /></button>
@@ -147,28 +179,34 @@ export default function App() {
       <section className="hero section-wrap" id="home">
         <div className="hero-copy">
           <div className="availability"><span className="status-dot" /> CLOUD & INFRASTRUCTURE ENGINEER</div>
-          <h1>Building reliable cloud systems.<br /><span>Making infrastructure work smarter.</span></h1>
-          <p className="hero-lede">I’m Arun — a Senior Engineer focused on Azure infrastructure, automation, migrations and cloud cost optimization.</p>
+          <h1>Azure infrastructure,<br /><span>built to be dependable.</span></h1>
+          <p className="hero-lede">I’m Arun Negi, a cloud engineer working across Azure migrations, Terraform, automation and cost optimization. I turn infrastructure requirements into repeatable, governed deployments.</p>
           <div className="hero-actions">
             <a className="button button-primary" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <FileText size={16} /></a>
             <a className="button button-secondary" href="https://github.com/Arun-Negi" target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={16} /></a>
           </div>
           <div className="hero-meta"><span><MapPin size={15} /> Bengaluru, India</span><span><ShieldCheck size={15} /> Azure · Terraform · Automation</span></div>
         </div>
-        <div className="hero-visual" aria-label="Cloud infrastructure illustration">
-          <div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
-          <div className="cloud-core"><svg className="azure-logo" viewBox="0 0 64 64" role="img" aria-label="Microsoft Azure logo"><path d="M25 5h17L17 54H2L25 5Z" fill="currentColor"/><path d="M43 5 62 54H27l9-13h8L31 23 43 5Z" fill="currentColor" opacity=".78"/></svg><span>AZURE</span></div>
-          <div className="float-card card-terraform"><svg className="terraform-logo" viewBox="0 0 32 32" role="img" aria-label="Terraform logo"><path fill="currentColor" d="M3 2 13 8v11L3 13V2Zm13 7 10 6v11l-10-6V9Zm0-14 10 6v11L16 6V-5Z" transform="translate(0 7)"/><path fill="currentColor" d="M16 23 26 29v-8l-10-6v8Z" opacity=".72"/></svg><span><b>Terraform</b><small>Infrastructure as code</small></span></div>
-          <div className="float-card card-automation"><Workflow className="automation-logo" size={20} strokeWidth={1.8} /><span><b>Automation</b><small>Repeatable workflows</small></span></div>
-          <div className="float-card card-security"><ShieldCheck size={17} /><span><b>Governance</b><small>Secure by design</small></span></div>
-          <div className="visual-caption">DESIGN · AUTOMATE · OPTIMIZE</div>
+        <div className="hero-console" aria-label="Infrastructure delivery workflow">
+          <div className="console-bar"><span /><span /><span /><small>INFRASTRUCTURE WORKFLOW</small></div>
+          <div className="console-body">
+            <p className="console-comment"># From request to reviewed deployment</p>
+            <div className="workflow-step"><span className="workflow-index">01</span><div><b>Configuration</b><small>Structured JSON inputs</small></div><span className="workflow-state">READY</span></div>
+            <div className="workflow-connector" />
+            <div className="workflow-step"><span className="workflow-index">02</span><div><b>Validation</b><small>Schema · naming · policy checks</small></div><span className="workflow-state">PASS</span></div>
+            <div className="workflow-connector" />
+            <div className="workflow-step"><span className="workflow-index">03</span><div><b>Terraform plan</b><small>Reusable Azure modules</small></div><span className="workflow-state">REVIEW</span></div>
+            <div className="workflow-connector" />
+            <div className="workflow-step"><span className="workflow-index">04</span><div><b>Approved delivery</b><small>Controlled infrastructure changes</small></div><span className="workflow-state workflow-state-blue">AZURE</span></div>
+          </div>
+          <div className="console-footer"><span className="console-live-dot" /> TERRAFORM · AZURE · GITHUB ACTIONS</div>
         </div>
         <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDownRight size={17} /></a>
       </section>
 
       <section className="impact-band" id="about">
         <div className="section-wrap impact-grid">
-          <Reveal><div className="impact-intro"><span className="eyebrow">AT A GLANCE</span><h2>Engineering outcomes,<br />not just infrastructure.</h2><p>Practical cloud engineering with a focus on efficiency, governance and measurable impact.</p></div></Reveal>
+          <Reveal><div className="impact-intro"><span className="eyebrow">SELECTED RESULTS</span><h2>Work measured<br />in outcomes.</h2><p>Migration delivery, cloud savings and automation across enterprise Azure environments.</p></div></Reveal>
           <Reveal><div className="impact-stat"><span className="stat-value">$1.5M</span><span className="stat-label">Project savings</span><p>Contributed to the CloudX-to-KCloud migration.</p></div></Reveal>
           <Reveal><div className="impact-stat"><span className="stat-value">$136K</span><span className="stat-label">Cloud optimization</span><p>Independently delivered cost savings.</p></div></Reveal>
           <Reveal><div className="impact-stat"><span className="stat-value">600<span>+</span></span><span className="stat-label">Subscriptions</span><p>Azure Automation runbooks for IaaS and RBAC.</p></div></Reveal>
@@ -177,26 +215,25 @@ export default function App() {
       </section>
 
       <section className="section-wrap content-section" id="experience">
-        <Reveal><SectionHeading eyebrow="CAREER JOURNEY" title="Experience" note="Cloud engineering across enterprise environments, from automation and governance to large-scale migration." /></Reveal>
+        <Reveal><SectionHeading eyebrow="CAREER JOURNEY" title="Experience" note="Azure delivery across enterprise environments — migrations, operational automation, governance and cost optimization." /></Reveal>
         <div className="timeline">
           {experience.map((job, index) => <ExperienceCard key={job.company} job={job} index={index} />)}
         </div>
       </section>
 
       <section className="projects-showcase" id="projects"><div className="section-wrap content-section projects-section">
-        <Reveal><SectionHeading eyebrow="SELECTED WORK" title="Featured projects" note="Practical projects focused on repeatable Azure infrastructure, policy-driven provisioning and a simpler developer experience." /></Reveal>
+        <Reveal><SectionHeading eyebrow="SELECTED WORK" title="Featured projects" note="Two connected projects: a Terraform platform for governed provisioning, and a portal that makes infrastructure requests easier to submit." /></Reveal>
         <div className="projects-grid">
-          <Reveal className="project-reveal"><article className={`project-card project-card-featured ${expandedProjectDetails.platform ? "is-details-open" : ""}`}>
-            <button className="project-details-toggle" type="button" onClick={() => setExpandedProjectDetails(value => ({ ...value, platform: !value.platform }))} aria-expanded={expandedProjectDetails.platform}>{expandedProjectDetails.platform ? "Hide project details" : "Explore project details"} <span aria-hidden="true">{expandedProjectDetails.platform ? "−" : "+"}</span></button>
+          <Reveal className="project-reveal"><article className="project-card project-card-featured">
             <div className="project-card-top"><span className="project-icon"><Cloud size={22} /></span><span className="project-kicker">01 / INFRASTRUCTURE</span></div>
             <div className="project-card-heading">
               <h3>Azure Terraform Infrastructure Platform</h3>
               <p>A guardrail-first Azure infrastructure platform that validates requests early and standardizes how teams provision compliant resources.</p>
             </div>
             <div className="project-tags"><span>Azure</span><span>Terraform</span><span>GitHub Actions</span><span>Policy & validation</span></div>
-            <div className="project-hover-details">
-              <span className="project-detail-label">THE ENGINEERING IDEA</span>
-              <p>Make the safe path the easy path: catch invalid configuration before Terraform reaches apply, rather than discovering avoidable errors at the end of a deployment.</p>
+            <div className="project-hover-details is-always-visible">
+              <span className="project-detail-label">WHAT IT DOES</span>
+              <p>Each resource group is independently deployable. Users submit structured service inputs; validation and review happen before an approved pipeline can make infrastructure changes.</p>
               <ul>
                 <li><ShieldCheck size={15} /><span><b>Governance guardrails</b> — reusable modules designed to apply organizational standards, with Azure Policy as a complementary compliance layer.</span></li>
                 <li><Code2 size={15} /><span><b>Shift-left validation</b> — readable JSON inputs, service-specific schemas, naming rules and resource constraints catch mistakes early.</span></li>
@@ -206,8 +243,7 @@ export default function App() {
             </div>
             <div className="project-links"><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-platform" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
-          <Reveal className="project-reveal"><article className={`project-card ${expandedProjectDetails.portal ? "is-details-open" : ""}`}>
-            <button className="project-details-toggle" type="button" onClick={() => setExpandedProjectDetails(value => ({ ...value, portal: !value.portal }))} aria-expanded={expandedProjectDetails.portal}>{expandedProjectDetails.portal ? "Hide project details" : "Explore project details"} <span aria-hidden="true">{expandedProjectDetails.portal ? "−" : "+"}</span></button>
+          <Reveal className="project-reveal"><article className="project-card">
             <div className="project-card-top"><span className="project-icon"><Workflow size={22} /></span><span className="project-kicker">02 / SELF-SERVICE PORTAL</span></div>
             <div className="project-card-heading">
               <h3>Terraform Infrastructure Portal</h3>
@@ -215,8 +251,8 @@ export default function App() {
             </div>
             <div className="project-tags"><span>Next.js</span><span>TypeScript</span><span>Terraform</span><span>Vercel</span></div>
             <div className="project-hover-details">
-              <span className="project-detail-label">THE DEVELOPER EXPERIENCE</span>
-              <p>Make infrastructure requests approachable through a guided UI while keeping changes reviewable and deployment separate from the request itself.</p>
+              <span className="project-detail-label">HOW IT WORKS</span>
+              <p>The portal collects resource inputs, validates them against the platform's service schemas and opens a GitHub change for review. It does not deploy infrastructure directly.</p>
               <ul>
                 <li><Code2 size={15} /><span><b>Guided inputs</b> — dynamic forms and readable JSON help users express the resources they need.</span></li>
                 <li><ShieldCheck size={15} /><span><b>Validation first</b> — surface configuration issues early and align requests with the platform's service schemas and naming standards.</span></li>
@@ -224,7 +260,7 @@ export default function App() {
               </ul>
               <span className="project-detail-outcome">GOAL · A simpler request flow without bypassing governance</span>
             </div>
-            <div className="project-links"><a href="https://terraform-infrastructure-portal.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/azure-terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
+            <div className="project-links"><a href="https://terraform-infrastructure-portal.vercel.app" target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a><a href="https://github.com/Arun-Negi/terraform-infrastructure-portal" target="_blank" rel="noreferrer">View source code <ArrowUpRight size={15} /></a></div>
           </article></Reveal>
         </div>
         </div>
@@ -242,7 +278,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact"><div className="section-wrap contact-inner"><Reveal><div><span className="eyebrow">GET IN TOUCH</span><h2>Let’s build something<br /><span>reliable together.</span></h2><p>For cloud infrastructure, automation and engineering conversations, feel free to connect.</p></div></Reveal><Reveal><div className="contact-links"><a href="mailto:heyarunnegi@gmail.com"><span className="contact-link-icon contact-email"><svg viewBox="0 0 48 48" role="img" aria-label="Gmail"><path fill="#4285F4" d="M6 12.5A4.5 4.5 0 0 1 13.2 9L24 17.1 34.8 9a4.5 4.5 0 0 1 7.2 3.5v23a4.5 4.5 0 0 1-4.5 4.5H35V17.3L24 25.5 13 17.3V40h-2.5A4.5 4.5 0 0 1 6 35.5v-23Z"/><path fill="#34A853" d="M6 14.2 13 19.5V40h-2.5A4.5 4.5 0 0 1 6 35.5V14.2Z"/><path fill="#FBBC04" d="M35 19.5 42 14.2v21.3a4.5 4.5 0 0 1-4.5 4.5H35V19.5Z"/><path fill="#EA4335" d="M6 12.5A4.5 4.5 0 0 1 13.2 9L24 17.1 34.8 9a4.5 4.5 0 0 1 7.2 3.5v1.7l-18 13.6L6 14.2v-1.7Z"/></svg></span><span><small>Email</small><b>heyarunnegi@gmail.com</b></span><ArrowUpRight size={17} /></a><a href="https://linkedin.com/in/aroonnegi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-linkedin"><svg viewBox="0 0 48 48" role="img" aria-label="LinkedIn"><path fill="currentColor" d="M9.2 17.5h7.1V39H9.2V17.5Zm3.6-10.7a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2ZM20.7 17.5h6.8v2.9h.1c.9-1.7 3.2-3.5 6.6-3.5 7.1 0 8.4 4.7 8.4 10.8V39h-7.1V28.9c0-2.4 0-5.5-3.4-5.5s-3.9 2.6-3.9 5.3V39h-7.1V17.5Z"/></svg></span><span><small>LinkedIn</small><b>linkedin.com/in/aroonnegi</b></span><ArrowUpRight size={17} /></a><a href="https://github.com/Arun-Negi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-github"><svg viewBox="0 0 24 24" role="img" aria-label="GitHub"><path fill="currentColor" d="M12 .297a12 12 0 0 0-3.797 23.4c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.3-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 6.006 0c2.292-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.628-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297Z"/></svg></span><span><small>GitHub</small><b>github.com/Arun-Negi</b></span><ArrowUpRight size={17} /></a></div></Reveal></div></section>
+      <section className="contact-section" id="contact"><div className="section-wrap contact-inner"><Reveal><div><span className="eyebrow">GET IN TOUCH</span><h2>Have an infrastructure<br /><span>problem to solve?</span></h2><p>Let’s talk about Azure, Terraform, cloud migrations or making infrastructure operations more predictable.</p></div></Reveal><Reveal><div className="contact-links"><a href="mailto:heyarunnegi@gmail.com"><span className="contact-link-icon contact-email"><svg viewBox="0 0 48 48" role="img" aria-label="Gmail"><path fill="#4285F4" d="M6 12.5A4.5 4.5 0 0 1 13.2 9L24 17.1 34.8 9a4.5 4.5 0 0 1 7.2 3.5v23a4.5 4.5 0 0 1-4.5 4.5H35V17.3L24 25.5 13 17.3V40h-2.5A4.5 4.5 0 0 1 6 35.5v-23Z"/><path fill="#34A853" d="M6 14.2 13 19.5V40h-2.5A4.5 4.5 0 0 1 6 35.5V14.2Z"/><path fill="#FBBC04" d="M35 19.5 42 14.2v21.3a4.5 4.5 0 0 1-4.5 4.5H35V19.5Z"/><path fill="#EA4335" d="M6 12.5A4.5 4.5 0 0 1 13.2 9L24 17.1 34.8 9a4.5 4.5 0 0 1 7.2 3.5v1.7l-18 13.6L6 14.2v-1.7Z"/></svg></span><span><small>Email</small><b>heyarunnegi@gmail.com</b></span><ArrowUpRight size={17} /></a><a href="https://linkedin.com/in/aroonnegi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-linkedin"><svg viewBox="0 0 48 48" role="img" aria-label="LinkedIn"><path fill="currentColor" d="M9.2 17.5h7.1V39H9.2V17.5Zm3.6-10.7a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2ZM20.7 17.5h6.8v2.9h.1c.9-1.7 3.2-3.5 6.6-3.5 7.1 0 8.4 4.7 8.4 10.8V39h-7.1V28.9c0-2.4 0-5.5-3.4-5.5s-3.9 2.6-3.9 5.3V39h-7.1V17.5Z"/></svg></span><span><small>LinkedIn</small><b>linkedin.com/in/aroonnegi</b></span><ArrowUpRight size={17} /></a><a href="https://github.com/Arun-Negi" target="_blank" rel="noreferrer"><span className="contact-link-icon contact-github"><svg viewBox="0 0 24 24" role="img" aria-label="GitHub"><path fill="currentColor" d="M12 .297a12 12 0 0 0-3.797 23.4c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.3-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 6.006 0c2.292-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.628-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297Z"/></svg></span><span><small>GitHub</small><b>github.com/Arun-Negi</b></span><ArrowUpRight size={17} /></a></div></Reveal></div></section>
     </main>
     <footer className="site-footer"><div className="section-wrap footer-inner"><a className="wordmark" href="#home"><span className="wordmark-mark">A</span><span>Arun Negi<span className="wordmark-dot">.</span></span></a><span>Cloud infrastructure · Automation · Continuous improvement</span><a href="#home" className="back-top">Back to top ↑</a></div></footer>
     <Analytics />
